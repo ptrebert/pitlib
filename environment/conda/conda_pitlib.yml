@@ -1,0 +1,10 @@
+name: pitlib
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - Python=3.6.*
+  - pip=19.2.*
+  - numpy=1.17.*
+  - pandas=0.25.*
+  - psutil=5.6.*  
