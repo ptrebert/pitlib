@@ -12,6 +12,8 @@ import argparse as argp
 import json as json
 import datetime as dt
 import socket as skt
+import random as rand
+import string as string
 import logging as logging
 import logging.config as logconf
 
@@ -92,8 +94,10 @@ def main():
     init_logger(args)
     logger.debug('Starting performance test')
     os.makedirs(args.outdir, exist_ok=True)
-    file_path = os.path.join(args.outdir, 'tmp_disk_perf.npy')
     hostname = skt.gethostname()
+    rand_string = ''.join(rand.sample(string.ascii_lowercase, 8))
+    file_path = os.path.join(args.outdir, 'tmp_io-perf_{}_{}.npy'.format(hostname, rand_string))
+
     logger.info('Running on host: {}'.format(hostname))
     logger.info('Writing temp data to file: {}'.format(file_path))
     logger.info('Repeating measurements {} times'.format(args.repeat))
